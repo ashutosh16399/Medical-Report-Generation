@@ -47,7 +47,7 @@ class ChestXrayDataSet(Dataset):
         if self.transform is not None:
             image = self.transform(image)
         try:
-            text = self.caption[image_name]
+            text = self.caption["CXR"+image_name]
         except Exception as err:
             text = 'normal. '
 
