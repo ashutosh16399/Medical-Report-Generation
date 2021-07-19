@@ -36,7 +36,7 @@ class ChestXrayDataSet(Dataset):
                 label = items[1:]
                 label = [int(i) for i in label]
                 image_name = '{}.dcm.png'.format(image_name)
-                if image_name=='CXR1_1_IM-0001-4001.png' or image_name=='CXR1_1_IM-0001-3001.png':
+                if image_name=='CXR1_1_IM-0001-4001.dcm.png' or image_name=='CXR1_1_IM-0001-3001.dcm.png':
                     continue;
                 filename_list.append(image_name)
                 labels.append(label)
