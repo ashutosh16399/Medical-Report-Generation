@@ -70,6 +70,11 @@ class DebuggerBase:
                                                                                train_loss,
                                                                                val_loss,
                                                                                self.optimizer.param_groups[0]['lr']))
+            print("[{} - Epoch {}] train loss:{} - val_loss:{} - lr:{}\n".format(self._get_now(),
+                                                                               epoch_id,
+                                                                               train_loss,
+                                                                               val_loss,
+                                                                               self.optimizer.param_groups[0]['lr']))
             self._save_model(epoch_id,
                              val_loss,
                              val_tag_loss,
