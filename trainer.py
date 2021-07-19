@@ -420,7 +420,7 @@ class LSTMDebugger(DebuggerBase):
 
             tag_loss += self.args.lambda_tag * batch_tag_loss.data
             stop_loss += self.args.lambda_stop * batch_stop_loss.data
-            word_loss += self.args.lambda_word * batch_word_loss.data
+            word_loss += self.args.lambda_word * batch_word_loss
             loss += batch_loss.data
 
         return tag_loss, stop_loss, word_loss, loss
