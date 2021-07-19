@@ -35,19 +35,20 @@ class ChestXrayDataSet(Dataset):
                 image_name = items[0]
                 label = items[1:]
                 label = [int(i) for i in label]
-                image_name = '{}.png'.format(image_name)
+                image_name = '{}.dcm.png'.format(image_name)
                 filename_list.append(image_name)
                 labels.append(label)
         return filename_list, labels
 
     def __getitem__(self, index):
         image_name = self.file_names[index]
+        image_name=image_name[3:];
         image = Image.open(os.path.join(self.image_dir, image_name)).convert('RGB')
         label = self.labels[index]
         if self.transform is not None:
             image = self.transform(image)
         try:
-            text = self.caption["CXR"+image_name]
+            text = self.caption[image_name]
         except Exception as err:
             text = 'normal. '
 
