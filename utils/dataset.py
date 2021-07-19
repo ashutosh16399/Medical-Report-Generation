@@ -42,7 +42,8 @@ class ChestXrayDataSet(Dataset):
 
     def __getitem__(self, index):
         image_name = self.file_names[index]
-        image_name=image_name[3:];
+        if image_name[0:3]=='CXR' or image_name[0:3]=='cxr' or image_name[0]=='C' or image_name[0]=='c':
+            image_name=image_name[3:];
         image = Image.open(os.path.join(self.image_dir, image_name)).convert('RGB')
         label = self.labels[index]
         if self.transform is not None:
