@@ -36,14 +36,15 @@ class ChestXrayDataSet(Dataset):
                 label = items[1:]
                 label = [int(i) for i in label]
                 image_name = '{}.dcm.png'.format(image_name)
+                if image_name=='CXR1_1_IM-0001-4001.png' or image_name=='CXR1_1_IM-0001-3001.png':
+                    continue;
                 filename_list.append(image_name)
                 labels.append(label)
         return filename_list, labels
 
     def __getitem__(self, index):
         image_name = self.file_names[index]
-        if image_name[0:3]=='CXR' or image_name[0:3]=='cxr' or image_name[0]=='C' or image_name[0]=='c':
-            image_name=image_name[3:];
+        image_name=image_name[3:];
         image = Image.open(os.path.join(self.image_dir, image_name)).convert('RGB')
         label = self.labels[index]
         if self.transform is not None:
